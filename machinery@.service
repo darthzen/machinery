@@ -1,0 +1,10 @@
+[Unit]
+Description=Machinery
+Documentation=man:machinery(1)
+After=network.target nss-lookup.target time-sync.target remote-fs.target systemd-user-sessions.service
+
+[Service]
+Environment="MACHINERY_PORT=7585"
+ExecStart=/usr/bin/machinery serve -p $MACHINERY_PORT
+User=%i
+KillMode=mixed
